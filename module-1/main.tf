@@ -2,11 +2,11 @@ terraform {
   required_version = ">=0.12"
 }
 
-resource "aws_instance" "ec2_example" {
+resource "aws_instance" "ec2_module_1" {
 
-    ami = "ami-0767046d1677be5a0"
-    instance_type = "t2.micro"
-    key_name= "aws_key"
+    ami = var.ami_id
+    instance_type = var.web_instance_type
+  # key_name= "aws_key"
     vpc_security_group_ids = [aws_security_group.main.id]
 
   user_data = <<-EOF
@@ -45,6 +45,3 @@ resource "aws_security_group" "main" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-
-resource "aws_key_pair" "deployer" {
