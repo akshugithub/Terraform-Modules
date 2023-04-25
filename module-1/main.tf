@@ -6,10 +6,11 @@ resource "aws_instance" "ec2_module_1" {
 
     ami = var.ami_id
     instance_type = var.web_instance_type
-  # key_name= "aws_key"
     vpc_security_group_ids = [aws_security_group.main.id]
+    associate_public_ip_address = true
 
-  user_data = <<-EOF
+
+user_data = <<-EOF
       #!/bin/sh
       sudo apt-get update
       sudo apt install -y apache2
@@ -20,13 +21,6 @@ resource "aws_instance" "ec2_module_1" {
       EOF
 }
 
-      tags = {
-    Name = "firstinstance"
-  }
-
-# output "public_ip_ec2" {
- # value       = aws_instance.ec2_module_1.public_ip
-}
 
 resource "aws_security_group" "main" {
     name        = "EC2-webserver-SG-1"
@@ -43,7 +37,7 @@ resource "aws_security_group" "main" {
     from_port   = 22
     protocol    = "TCP"
     to_port     = 22
-    cidr_blocks = ["115.97.103.44/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -53,3 +47,4 @@ resource "aws_security_group" "main" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+  
