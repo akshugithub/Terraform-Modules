@@ -20,6 +20,11 @@ resource "aws_instance" "ec2_module_1" {
       EOF
 }
 
+      tags = {
+    Name = "firstinstance"
+  }
+
+
 resource "aws_security_group" "main" {
     name        = "EC2-webserver-SG-1"
   description = "Webserver for EC2 Instances"
