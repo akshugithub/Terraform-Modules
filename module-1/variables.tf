@@ -6,5 +6,5 @@ variable "web_instance_type" {
 variable "ami_id" {
   type        = string
   description = "EC2 Machine AMI id"
-  default     = "ami-0767046d1677be5a0"
+  default     = "ami-0f8ca728008ff5af4"
 }
