@@ -2,7 +2,7 @@ terraform {
   required_version = ">=0.12"
 }
 
-resource "aws_instance" "ec2_example" {
+resource "aws_instance" "ec2_module_2" {
 
     ami = var.ami_id
     instance_type = var.web_instance_type
