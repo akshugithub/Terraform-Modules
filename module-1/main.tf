@@ -24,8 +24,8 @@ resource "aws_instance" "ec2_module_1" {
     Name = "firstinstance"
   }
 
-output "public_ip_ec2" {
-  value       = aws_instance.ec2_module_1.public_ip
+# output "public_ip_ec2" {
+ # value       = aws_instance.ec2_module_1.public_ip
 }
 
 resource "aws_security_group" "main" {
