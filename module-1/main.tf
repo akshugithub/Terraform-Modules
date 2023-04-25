@@ -23,7 +23,7 @@ user_data = <<-EOF
 
 
 resource "aws_security_group" "main" {
-    name        = "EC2-webserver-SG-1"
+    name        = "tfsecgrp1"
   description = "Webserver for EC2 Instances"
 
   ingress {
