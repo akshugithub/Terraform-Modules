@@ -4,10 +4,10 @@ provider "aws" {
    secret_key = var.secret_key
 }
 
-module "jhooq-webserver-1" {
-  source = ".//module-1"
+module "module-1" {
+  source = "/root/Terraform-Modules/module-1"
 }
 
-module "jhooq-webserver-2" {
-  source = ".//module-2"
+module "module-2" {
+  source = "/root/Terraform-Modules/module-2"
 }
