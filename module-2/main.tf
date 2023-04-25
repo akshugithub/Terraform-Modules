@@ -6,8 +6,9 @@ resource "aws_instance" "ec2_module_2" {
 
     ami = var.ami_id
     instance_type = var.web_instance_type
- #  key_name= "aws_key"
     vpc_security_group_ids = [aws_security_group.main.id]
+    associate_public_ip_address = true
+
 
   user_data = <<-EOF
       #!/bin/sh
@@ -20,13 +21,6 @@ resource "aws_instance" "ec2_module_2" {
       EOF
 }
 
-      tags = {
-    Name = "secondinstance"
-  }
-
-# output "public_ip_ec2" {
- # value       = aws_instance.ec2_module_2.public_ip
-}
 
 resource "aws_security_group" "main" {
     name        = "EC2-webserver-SG-1"
@@ -43,10 +37,9 @@ resource "aws_security_group" "main" {
     from_port   = 22
     protocol    = "TCP"
     to_port     = 22
-    cidr_blocks = ["115.97.103.44/32"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
-
-  egress {
+ egress {
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
